@@ -17,7 +17,7 @@ detects compromised-identity indicators using behavioral analytics:
 
 Each detection maps to MITRE ATT&CK for enterprise + cloud matrix.
 
-Author: Adithya Vasamsetti (CyberEnthusiastic)
+Author: Mohith Vasamsetti (CyberEnthusiastic)
 License: MIT
 """
 import argparse
