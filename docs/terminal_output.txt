@@ -1,0 +1,83 @@
+
+  ITDR Engine v1.0
+  Copyright (c) 2026 Mohith Vasamsetti
+  https://github.com/CyberEnthusiastic
+  Licensed for personal use only. See LICENSE for terms.
+
+============================================================
+  [ITDR Engine v1.0 - Identity Threat Detection & Response]
+============================================================
+  Events ingested   : 36
+  Alerts generated  : 11
+  Users flagged     : 5
+  Avg risk score    : 90.0
+  By severity       : {'CRITICAL': 7, 'HIGH': 4}
+
+  [91m[CRITICAL][0m Data Exfil — S3 Bucket Made Public (risk=98.0)
+    User: dave.wilson@acme.com
+    MITRE: TA0010 Exfiltration / T1537 Transfer Data to Cloud Account
+    Detail: PutBucketPolicy: s3://customer-data-prod (public)
+    Action: Activate incident response. This is likely an active breach.
+
+  [91m[CRITICAL][0m Anti-Forensics — CloudTrail Logging Disabled (risk=98.0)
+    User: dave.wilson@acme.com
+    MITRE: TA0005 Defense Evasion / T1562 Impair Defenses
+    Detail: StopLogging: CloudTrail main
+    Action: Activate incident response. This is likely an active breach.
+
+  [91m[CRITICAL][0m Impossible Travel (risk=95.0)
+    User: alice.chen@acme.com
+    MITRE: TA0001 Initial Access / T1078 Valid Accounts
+    Detail: Seattle -> Bucharest (9329 km in 0.1h = 139932 km/h)
+    Action: Terminate active sessions. Force password reset. Investigate compromised credentials.
+
+  [91m[CRITICAL][0m Impossible Travel (risk=95.0)
+    User: service-account-cicd@acme.com
+    MITRE: TA0001 Initial Access / T1078 Valid Accounts
+    Detail: us-east-1 -> Lagos (8768 km in 0.1h = 105214 km/h)
+    Action: Terminate active sessions. Force password reset. Investigate compromised credentials.
+
+  [91m[CRITICAL][0m Service Account Used from External IP (risk=94.0)
+    User: service-account-cicd@acme.com
+    MITRE: TA0001 Initial Access / T1078.001 Default Accounts
+    Detail: Service account accessed from external IP(s): 203.0.113.222
+    Action: Rotate service account credentials immediately. Investigate source of external access.
+
+  [91m[CRITICAL][0m Lateral Movement — Cross-Account AssumeRole (risk=92.0)
+    User: dave.wilson@acme.com
+    MITRE: TA0008 Lateral Movement / T1550 Use Alternate Authentication Material
+    Detail: AssumeRole: arn:aws:iam::123456789:role/OrgAdmin from CN
+    Action: Investigate the assumed role's actions. Check for data access or exfiltration.
+
+  [91m[CRITICAL][0m Privilege Escalation (risk=90.0)
+    User: ghost.account@acme.com
+    MITRE: TA0004 Privilege Escalation / T1078.004 Cloud Accounts
+    Detail: Self-elevated to Global Admin
+    Action: Verify with user manager. If unauthorized, revoke immediately and investigate.
+
+  [93m[HIGH][0m Credential Stuffing / Brute Force (risk=88.0)
+    User: bob.kumar@acme.com
+    MITRE: TA0006 Credential Access / T1110 Brute Force
+    Detail: 10 failed logins from 192.0.2.99 (RU) in 1 min targeting 1 user(s)
+    Action: Block source IP. Check if any user was subsequently compromised. Review firewall/WAF rules.
+
+  [93m[HIGH][0m Dormant Account Reactivation (risk=82.0)
+    User: ghost.account@acme.com
+    MITRE: TA0001 Initial Access / T1078 Valid Accounts
+    Detail: Dormant account (last login 14 months ago) password reset
+    Action: Verify with HR if account should still exist. If not, disable and investigate.
+
+  [93m[HIGH][0m Privilege Escalation (risk=80.0)
+    User: dave.wilson@acme.com
+    MITRE: TA0004 Privilege Escalation / T1078.004 Cloud Accounts
+    Detail: Added to group: AdminAccess
+    Action: Verify with user manager. If unauthorized, revoke immediately and investigate.
+
+  [93m[HIGH][0m Persistence — New Credentials Created (risk=78.0)
+    User: dave.wilson@acme.com
+    MITRE: TA0003 Persistence / T1098 Account Manipulation
+    Detail: CreateAccessKey for user dave.wilson
+    Action: Verify if this was an authorized change. Rotate the new key if suspicious.
+
+[+] JSON report: reports/itdr_report.json
+[+] HTML report: reports/itdr_report.html

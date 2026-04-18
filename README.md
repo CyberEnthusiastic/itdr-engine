@@ -39,6 +39,20 @@ technique with risk scoring and response recommendations.
 
 ---
 
+## Screenshots (ran locally, zero setup)
+
+**Terminal output** - exactly what you see on the command line:
+
+![Terminal output](docs/screenshots/terminal.png)
+
+**Interactive HTML dashboard** - opens in any browser, dark-mode, filterable:
+
+![HTML report](docs/screenshots/report.png)
+
+Both screenshots are captured from a real local run against the bundled samples. Reproduce them with the quickstart commands below.
+
+---
+
 ## Why you want this
 
 | | **ITDR Engine** | CrowdStrike ITP | Entra ID Protection | Semperis |
